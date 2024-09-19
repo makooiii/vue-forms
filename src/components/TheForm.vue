@@ -74,6 +74,9 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="form-control">
+      <rating-control></rating-control>
+    </div>
     <div class="form-contorl">
       <input
         type="checkbox"
@@ -81,6 +84,7 @@
         name="confirm-terms"
         v-model="confirm"
       />
+
       <label for="confirm-terms">Agree to terms of use?</label>
     </div>
     <div>
@@ -90,8 +94,12 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
 // Every v-model html checkboxes should have value to get its value
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: '',
