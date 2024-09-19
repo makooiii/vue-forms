@@ -10,7 +10,7 @@
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
-      <select id="referrer" name="referrer">
+      <select id="referrer" name="referrer" v-model="referrer">
         <option value="google">Google</option>
         <option value="wom">Word of mouth</option>
         <option value="newspaper">Newspaper</option>
@@ -19,32 +19,59 @@
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" />
+        <input
+          id="interest-news"
+          name="interest"
+          type="checkbox"
+          value="news"
+          v-model="interest"
+        />
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" />
+        <input
+          id="interest-tutorials"
+          name="interest"
+          type="checkbox"
+          value="tutorials"
+          v-model="interest"
+        />
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" />
+        <input
+          id="interest-nothing"
+          name="interest"
+          type="checkbox"
+          value="nothing"
+          v-model="interest"
+        />
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input id="how-video" name="how" type="radio" v-model="how" />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" />
+        <input id="how-blogs" name="how" type="radio" v-model="how" />
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input id="how-other" name="how" type="radio" v-model="how" />
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div class="form-contorl">
+      <input
+        type="checkbox"
+        id="confirm-terms"
+        name="confirm-terms"
+        v-model="confirm"
+      />
+      <label for="confirm-terms">Agree to terms of use?</label>
     </div>
     <div>
       <button>Save Data</button>
@@ -53,19 +80,38 @@
 </template>
 
 <script>
+// Every v-model html checkboxes should have value to get its value
 export default {
   data() {
     return {
       userName: '',
       userAge: null,
+      referrer: 'wom',
+      interest: [],
+      how: null,
+      confirm: false,
     };
   },
   methods: {
     submitForm() {
       console.log('Username:' + this.userName);
       this.userName = '';
+      console.log('User age');
       console.log(this.userAge);
+      console.log(31);
       this.userAge = null;
+      console.log('Referrer' + this.referrer);
+      this.referrer = 'wow';
+      console.log('Checkboxes');
+      console.log(this.interest);
+      console.log('Radio Buttons');
+      console.log(this.how);
+      this.interest = [];
+      this.how = null;
+
+      console.log('confirm? ');
+      console.log(this.confirm);
+      this.confirm = false;
     },
   },
 };
